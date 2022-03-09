@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+const EventEmitter = require('events')
+const Primus = require('primus')
+const path = require('path')
+
+const primus = new Primus(new EventEmitter(), {
+  transformer: 'websockets',
+  pingInterval: false
+})
+
+primus.save(path.join(__dirname, '..', 'lib', 'primus.js'))
